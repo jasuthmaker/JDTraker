@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: jdtraker
+    runtime: docker
+    dockerfilePath: ./Dockerfile.render
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: PASSWORD_LOGIN
+        value: "1"
+      - key: FIRST_USER_ADMIN
+        value: "1"

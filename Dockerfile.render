@@ -1,0 +1,23 @@
+# Single-container build of JDTraker (frontend + API) for hosts that run one container, e.g. Render.
+FROM node:22-alpine AS build
+WORKDIR /app/frontend
+COPY frontend/package.json frontend/package-lock.json* ./
+RUN npm ci --ignore-scripts
+COPY api/coach/core/ /app/api/coach/core/
+COPY frontend/ ./
+RUN npm run build
+
+FROM node:22-alpine
+RUN apk add --no-cache nginx gettext
+WORKDIR /app
+COPY api/package.json api/package-lock.json* ./
+RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+COPY api/server.js api/push-messages.js api/nudge.js api/nudge-copy.js api/verify-error.js api/password.js api/rate-limit.js api/passkeys-store.js api/device-link.js api/media.js api/queue.js api/sync-stamps.js api/durable.js ./
+COPY api/coach ./coach
+COPY --from=build /app/frontend/dist /usr/share/nginx/html
+COPY catalogue/media/ /usr/share/nginx/html/exercise-media/
+COPY web/nginx.conf.template /etc/nginx/nginx.conf.template
+COPY render-start.sh /render-start.sh
+RUN chmod +x /render-start.sh && adduser -D -H -s /sbin/nologin coach && mkdir -p /data
+ENV NODE_ENV=production
+CMD ["/render-start.sh"]
