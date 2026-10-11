@@ -1,6 +1,6 @@
 # Third-party notices
 
-openGym — Copyright (C) 2026 Duarte Santos.
+JDTraker — Copyright (C) 2026 jasuthmaker. Based on openGym, Copyright (C) 2026 Duarte Santos (AGPL-3.0).
 openGym's own code is licensed under the **GNU AGPL v3.0** (see [LICENSE](LICENSE)).
 
 ## App store exception

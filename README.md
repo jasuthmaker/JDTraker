@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="openGym" width="720">
+<h1>JDTraker</h1>
 
-**A self-hosted gym and body-weight tracker you actually own.**
+**JDTraker: a gym and body-weight tracker by jasuthmaker.**
 
 Plan your week, run guided workouts, log every set and your body weight,<br>
 on your phone, synced across your devices, behind your own passkey login.

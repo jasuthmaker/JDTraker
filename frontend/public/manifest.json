@@ -1,6 +1,6 @@
 {
-  "name": "openGym",
-  "short_name": "openGym",
+  "name": "JDTraker",
+  "short_name": "JDTraker",
   "description": "Personal gym & body weight tracker",
   "start_url": "./",
   "scope": "./",
